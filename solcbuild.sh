@@ -1,6 +1,10 @@
 #!/bin/sh
 cd contracts
-git clone https://github.com/pancakeswap/pancake-swap-lib.git
+
+if [ ! -d "pancake-swap-lib" ]; then
+  git clone https://github.com/pancakeswap/pancake-swap-lib.git
+fi
+
 solc @pancakeswap/pancake-swap-lib/=./pancake-swap-lib/ --bin --abi --optimize -o ./abibin MasterChef.sol
 
 
